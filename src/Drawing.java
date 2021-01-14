@@ -24,7 +24,7 @@ public class Drawing extends Canvas {
     @Override
     public void paint(Graphics g) {
         // Flip so fits to a real axis system (start from bottom left)
-        Graphics2D g2d = (Graphics2D) g.create();
+        Graphics2D g2d = (Graphics2D)g.create();
         g2d.scale(1, -1);
         g2d.translate(0, -getHeight());
 
