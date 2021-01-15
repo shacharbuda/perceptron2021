@@ -23,8 +23,10 @@ public class Main {
         for (Point pnt: pnts) {
             int guess = brain.feedForward(pnt);
             pnt.setGuess(guess);
-            System.out.println(guess);
         }
+
+
+//        Point[] trainingData = new Point[]{ new Point(0, -1)}
 
         new Drawing(pnts);
     }
