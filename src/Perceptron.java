@@ -3,13 +3,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Perceptron {
 
     private static double randDouble(double min, double max) {
-        // +1 to make inclusive.
-        return ThreadLocalRandom.current().nextDouble(min, max + 1);
+        return ThreadLocalRandom.current().nextDouble(min, max);
     }
 
     private double[] weights = new double[]{ randDouble(-1, 1), randDouble(-1, 1)};
     // Learning rate
-    private double LR = 0.1;
+    private double LR = 0.005;
     // TODO:  bias
 
     // x and y of point is the "2" inputs of the perceptron
@@ -23,7 +22,7 @@ public class Perceptron {
         return target - guess;
     }
 
-    private void train(Point pntInput, int target) {
+    public void train(Point pntInput, int target) {
         int guess = this.feedForward(pntInput);
         int error = this.getError(guess, target);
 
@@ -31,6 +30,9 @@ public class Perceptron {
         for (int i = 0; i < this.weights.length; i++) {
             this.weights[i] = this.weights[i] + error * this.LR;
         }
+
+        System.out.println(weights[0]);
+        System.out.println(weights[1]);
     }
 
     private int activationFunc(double sum) {

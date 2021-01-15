@@ -1,4 +1,9 @@
+import java.io.IOException;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -11,7 +16,12 @@ public class Main {
         return new Point(randInt(0, Consts.WIDTH), randInt(0, Consts.HEIGHT));
     }
 
-    public static void main(String[] args) {
+    private static void guessPnt(Perceptron brain, Point pnt) {
+        int guess = brain.feedForward(pnt);
+        pnt.setGuess(guess);
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
         Point[] pnts = new Point[100];
 
         // TODO: switch to map func
@@ -21,13 +31,27 @@ public class Main {
 
         Perceptron brain = new Perceptron();
         for (Point pnt: pnts) {
-            int guess = brain.feedForward(pnt);
-            pnt.setGuess(guess);
+            guessPnt(brain, pnt);
         }
 
+        // Draw once
+        Drawing myDraw = new Drawing(pnts);
 
-//        Point[] trainingData = new Point[]{ new Point(0, -1)}
+        for (int i = 0; i < 10000; i++) {
+            System.out.println("training iteration " + i);
+            Point p = getRandomPnt();
+            int target = p.getTarget();
 
-        new Drawing(pnts);
+            brain.train(p, target);
+
+            // guess again after training iteration!
+            for (Point pnt: pnts) {
+                guessPnt(brain, pnt);
+            }
+            // Draw again
+            Thread.sleep(100);
+            myDraw.repaint();
+        }
+
     }
 }

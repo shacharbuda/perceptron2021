@@ -4,6 +4,11 @@ public class Point {
     public int x;
     public int y;
     private int guess;
+
+    public int getTarget() {
+        return target;
+    }
+
     private int target;
 
     public Point(int x, int y) {
