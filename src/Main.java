@@ -19,6 +19,13 @@ public class Main {
             pnts[i] = getRandomPnt();
         }
 
+        Perceptron brain = new Perceptron();
+        for (Point pnt: pnts) {
+            int guess = brain.feedForward(pnt);
+            pnt.setGuess(guess);
+            System.out.println(guess);
+        }
+
         new Drawing(pnts);
     }
 }

@@ -1,26 +1,33 @@
 import java.awt.*;
 
 public class Point {
-    int x;
-    int y;
+    public int x;
+    public int y;
+    private int guess;
+    private int target;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+
+        this.target = this.calcTarget();
     }
 
-    public int target() {
-        if (x >= y) return -1;
+    public void setGuess(int guess) {
+        this.guess = guess;
+    }
+
+    private int calcTarget() {
+        if (this.x >= this.y) return -1;
         else return 1;
     }
 
-    public boolean isCorrect(int guess) {
-        return (this.target() == guess);
+    public boolean isCorrect() {
+        return (this.target == this.guess);
     }
 
     public Color color() {
-        // TODO: change with actual guess
-        if (this.isCorrect(1)) return Color.green;
+        if (this.isCorrect()) return Color.green;
         return Color.red;
     }
 }
