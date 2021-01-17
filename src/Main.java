@@ -1,15 +1,9 @@
 import java.io.IOException;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
-    private static int randInt(int min, int max) {
-        // +1 to make inclusive.
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
     private static Point getRandomPnt() {
-        return new Point(randInt(0, Consts.WIDTH), randInt(0, Consts.HEIGHT));
+        return new Point(Utils.randInt(0, Consts.WIDTH), Utils.randInt(0, Consts.HEIGHT));
     }
 
     private static void guessPnt(Perceptron brain, Point pnt) {

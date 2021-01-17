@@ -1,12 +1,6 @@
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Perceptron {
 
-    private static double randDouble(double min, double max) {
-        return ThreadLocalRandom.current().nextDouble(min, max);
-    }
-
-    private final double[] weights = new double[]{ randDouble(-1, 1), randDouble(-1, 1)};
+    private final double[] weights = new double[]{ Utils.randDouble(-1, 1), Utils.randDouble(-1, 1)};
     // Learning rate
     private final double LR = 0.005;
     // TODO:  bias
