@@ -9,7 +9,7 @@ public class Point {
         return target;
     }
 
-    private int target;
+    private final int target;
 
     public Point(int x, int y) {
         this.x = x;

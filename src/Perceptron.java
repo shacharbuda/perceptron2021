@@ -6,9 +6,9 @@ public class Perceptron {
         return ThreadLocalRandom.current().nextDouble(min, max);
     }
 
-    private double[] weights = new double[]{ randDouble(-1, 1), randDouble(-1, 1)};
+    private final double[] weights = new double[]{ randDouble(-1, 1), randDouble(-1, 1)};
     // Learning rate
-    private double LR = 0.005;
+    private final double LR = 0.005;
     // TODO:  bias
 
     // x and y of point is the "2" inputs of the perceptron
