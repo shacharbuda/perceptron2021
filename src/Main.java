@@ -27,7 +27,7 @@ public class Main {
         // Draw once
         Drawing myDraw = new Drawing(pnts);
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             System.out.println("training iteration " + i);
             Point p = getRandomPnt();
             int target = p.getTarget();
@@ -39,7 +39,7 @@ public class Main {
                 guessPnt(brain, pnt);
             }
             // Draw again
-            Thread.sleep(100);
+            Thread.sleep(200);
             myDraw.repaint();
         }
 
