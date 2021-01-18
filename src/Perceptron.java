@@ -20,10 +20,17 @@ public class Perceptron {
         int guess = this.feedForward(pntInput);
         int error = this.getError(guess, target);
 
-        // adjust weights based on gradient descent.
-        for (int i = 0; i < this.weights.length; i++) {
-            this.weights[i] = this.weights[i] + error * this.LR;
+        if (error == 0) {
+            System.out.println("no error - weights are same");
+            return;
         }
+
+        // adjust weights based on gradient descent.
+//        for (int i = 0; i < this.weights.length; i++) {
+        // TODO: deploy pntInput and weights (weights * pntInput) instead of two lines.
+        this.weights[0] += error * pntInput.x * this.LR;
+        this.weights[1] += error * pntInput.y * this.LR;
+//        }
 
         System.out.println(weights[0]);
         System.out.println(weights[1]);
